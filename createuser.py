@@ -9,6 +9,9 @@ try:
 except FileNotFoundError:
     print("no users.json file creating a new one")
     data = {}
+except json.JSONDecodeError:
+    print("Invalid users.json file detected creating a new one")
+    data = {}
 data[Username] = generate_password_hash(Password)
 
 print(data)

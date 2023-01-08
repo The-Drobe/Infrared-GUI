@@ -5,13 +5,16 @@ try:
     with open("users.json") as file:
         data = json.load(file)
 except FileNotFoundError:
-    print("no users.json file exits consider creating a new user via running 'docker exec -i containername python3 createuser.py'")
+    print("no users.json file exists consider creating a new user via running 'docker exec -i containername python3 createuser.py'")
+    exit()
+except json.JSONDecodeError:
+    print("Invalid users.json file detected consider creating a new user via running 'docker exec -i containername python3 createuser.py")
     exit()
 
 for i in data.keys():
     print(i)
 
-selection = input('please input of what users above you wish to remove: ')
+selection = input('please input the user above you wish to remove: ')
 try:
     data.pop(selection)
 except KeyError:
