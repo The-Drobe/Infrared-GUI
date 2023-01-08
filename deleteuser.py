@@ -5,7 +5,7 @@ try:
     with open("users.json") as file:
         data = json.load(file)
 except FileNotFoundError:
-    print("no users.json file exits consider creating a new user via running 'docker exec containername python3 createuser.py'")
+    print("no users.json file exits consider creating a new user via running 'docker exec -i containername python3 createuser.py'")
     exit()
 
 for i in data.keys():

@@ -18,8 +18,12 @@ try:
     with open("users.json", "r") as file:
         users = json.load(file)
 except FileNotFoundError:
-    print("no users.json file detected please create a user via running 'docker exec containername python3 createuser.py' otherwise you will not be able to log in")
+    print("no users.json file detected please create a user via running 'docker exec -i containername python3 createuser.py' otherwise you will not be able to log in")
     users = {}
+except json.JSONDecodeError:
+    print("Invalid users.json file detected please create a user via running 'docker exec -i containername python3 createuser.py' otherwise you will not be able to log in")
+    users = {}
+
 
 @auth.verify_password
 def verify_password(username, password):
