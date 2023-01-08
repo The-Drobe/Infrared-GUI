@@ -17,5 +17,5 @@ jobs:
     - name: Build & Push Image
       run: |
         echo "${{ secrets.DOCKERPW }}" | docker login -u "thedrobe" --password-stdin
-        docker image build -t dab8106/pyflask:latest .
+        docker image build -t thedrobe/infrared-gui:latest .
         docker push thedrobe/infrared-gui:latest
