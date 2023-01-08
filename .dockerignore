@@ -5,3 +5,5 @@ dockerfile
 __pycache__
 docker-compose.yml
 users.json.old
+readme.md
+img
