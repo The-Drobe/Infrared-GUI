@@ -1,0 +1,13 @@
+version: "3"
+services:
+  infrared-gui:
+    build: .
+    container_name: infrared-gui
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    volumes:
+      - ./users.json:/users.json
+      - ./infrared/data/configs/:/infrared/data/configs/
+    ports:
+      - 5000:5000
+    restart: unless-stopped

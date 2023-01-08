@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+      $(function(){
+          $("#deleteselect").select2();
+      }); 
+    </script>
+    <title>Index</title>
+</head>
+<body>
+    <h1>Infrared-GUI</h1>
+    <br>
+    <div class="form">
+        <form action="{{ url_for('newroute')}}" method="post">
+            <h4>Domain Name</h4>
+            <input type="text" name="domainname" id="" placeholder="Domain Name">
+            <br>
+            <div class="secondline">
+                <h4>IP Address</h4>
+                <h4 id="right">Port</h4>
+                <br>
+                <input type="text" name="IPAddr" id="" placeholder="IP Address">
+                <input type="number" name="Port" id="" placeholder="Port">
+            </div>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+   <br>
+    <table id="t01">
+        <tr>
+            <th>Domains</th>
+            <th>IP Address</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+        <td class="c1">{{item.domainName}}</td>
+        <td class="c1">{{item.proxyTo}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <form action="{{ url_for('deleteroute')}}" method="post", class="deleteselectform">
+        <div class="deleteselectformdiv">
+            <select name="deleteselect" id="deleteselect">
+                {% for i in deleteselect %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Remove">
+        </div>
+        
+    </form>
+</body>
+</html>

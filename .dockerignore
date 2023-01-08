@@ -1,0 +1,6 @@
+venv
+infrared
+users.json
+dockerfile
+__pycache__
+docker-compose.yml
